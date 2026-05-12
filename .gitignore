@@ -10,3 +10,4 @@ node_modules/
 *~
 _global-plugins/
 *.plugin
+.test-write
