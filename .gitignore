@@ -8,5 +8,3 @@ node_modules/
 .idea/
 *.swp
 *~
-_global-plugins/
-*.plugin
