@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repro Construction — New England QSR Specialists</title>
+<meta name="description" content="Fast-track restaurant builders. New England's QSR refresh and remodel specialist. Dunkin', Jersey Mike's, Dave's Hot Chicken, Wayback Burgers — over 30 years of work that opens on time.">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --bg: #fafaf9;
+    --ink: #0c0a09;
+    --ink-dim: #44403c;
+    --ink-mute: #78716c;
+    --line: #e7e5e4;
+    --green: #15803d;
+    --green-dark: #166534;
+    --green-light: #f0fdf4;
+    --white: #ffffff;
+  }
+  html, body { height: 100%; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: var(--ink); background: var(--bg);
+    -webkit-font-smoothing: antialiased;
+    overflow: hidden;
+  }
+  .draft-banner {
+    background: #fef3c7; color: #78350f; font-size: 12px; padding: 6px 16px;
+    text-align: center; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .stage {
+    height: 100vh; display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  .bg-pattern {
+    position: absolute; inset: 0; z-index: 0; opacity: 0.04;
+    background-image: radial-gradient(var(--ink) 1px, transparent 1px);
+    background-size: 24px 24px;
+  }
+  .content { position: relative; z-index: 2; flex: 1; display: flex; flex-direction: column; }
+  header {
+    padding: 18px 40px; display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--line);
+  }
+  .wordmark {
+    font-size: 22px; font-weight: 800; letter-spacing: -0.04em; color: var(--ink);
+  }
+  .wordmark .dot { color: var(--green); }
+  .header-right { display: flex; gap: 20px; align-items: center; }
+  .phone {
+    color: var(--ink); text-decoration: none; font-weight: 600; font-size: 14px;
+  }
+  .talk-button {
+    background: var(--green); color: var(--white); padding: 9px 18px;
+    border-radius: 6px; font-weight: 600; text-decoration: none; font-size: 14px;
+    border: none; cursor: pointer; font-family: inherit;
+    transition: background 0.15s;
+  }
+  .talk-button:hover { background: var(--green-dark); }
+  .hero {
+    flex: 1; display: flex; flex-direction: column; justify-content: center;
+    padding: 32px 48px; max-width: 1200px; margin: 0 auto; width: 100%;
+  }
+  h1 {
+    font-size: clamp(34px, 4.5vw, 60px); font-weight: 800;
+    letter-spacing: -0.035em; line-height: 1.04; margin-bottom: 14px; color: var(--ink);
+  }
+  h1 .pop { color: var(--green); }
+  .subline {
+    font-size: clamp(15px, 1.4vw, 19px); color: var(--ink-dim);
+    margin-bottom: 32px; max-width: 660px; line-height: 1.5;
+  }
+  .router {
+    display: grid; grid-template-columns: repeat(4, 1fr); gap: 12px; margin-bottom: 28px;
+  }
+  .tile {
+    background: var(--white); border: 1px solid var(--line); border-radius: 10px;
+    padding: 18px 16px; cursor: pointer; transition: all 0.15s;
+    text-align: left; font-family: inherit; display: flex; flex-direction: column;
+    gap: 10px; min-height: 96px; justify-content: space-between;
+  }
+  .tile:hover {
+    border-color: var(--green); transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(21, 128, 61, 0.1);
+  }
+  .tile-icon {
+    width: 22px; height: 22px; color: var(--green);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px;
+  }
+  .tile-label { font-weight: 600; font-size: 14px; color: var(--ink); line-height: 1.3; }
+  .trust {
+    display: flex; align-items: center; gap: 40px;
+    padding-top: 24px; border-top: 1px solid var(--line);
+  }
+  .logos { display: flex; gap: 22px; align-items: center; flex: 1; flex-wrap: wrap; }
+  .logos span {
+    font-weight: 800; color: var(--ink-mute); font-size: 11px;
+    letter-spacing: 0.08em; text-transform: uppercase;
+  }
+  .stat-block { display: flex; flex-direction: column; gap: 2px; }
+  .stat { font-size: 26px; font-weight: 800; color: var(--green); line-height: 1; }
+  .stat-label {
+    font-size: 11px; color: var(--ink-mute); text-transform: uppercase;
+    letter-spacing: 0.08em; font-weight: 700;
+  }
+  .quote {
+    font-size: 13px; color: var(--ink-dim); max-width: 280px;
+    line-height: 1.45; font-style: italic;
+  }
+  .quote cite {
+    display: block; font-style: normal; font-weight: 700; color: var(--ink);
+    margin-top: 6px; font-size: 11px; letter-spacing: 0.02em;
+  }
+  /* Wizard modal */
+  .backdrop {
+    display: none; position: fixed; inset: 0; background: rgba(12,10,9,0.6);
+    z-index: 100; align-items: center; justify-content: center; padding: 20px;
+    backdrop-filter: blur(4px);
+  }
+  .backdrop.open { display: flex; }
+  .wizard {
+    background: var(--white); border-radius: 14px; padding: 32px;
+    max-width: 520px; width: 100%; max-height: 90vh; overflow-y: auto;
+  }
+  .progress { display: flex; gap: 4px; margin-bottom: 24px; }
+  .progress div { flex: 1; height: 3px; border-radius: 2px; background: var(--line); transition: background 0.2s; }
+  .progress div.done { background: var(--green); }
+  .step h2 {
+    font-size: 22px; margin-bottom: 8px; font-weight: 700; letter-spacing: -0.02em;
+  }
+  .step .hint { color: var(--ink-mute); font-size: 14px; margin-bottom: 18px; }
+  .step { display: none; }
+  .step.active { display: block; }
+  .options { display: grid; gap: 10px; }
+  .opt {
+    padding: 14px 16px; background: var(--bg); border: 1px solid var(--line);
+    border-radius: 8px; cursor: pointer; font-family: inherit; font-size: 15px;
+    text-align: left; transition: all 0.12s; color: var(--ink); font-weight: 500;
+  }
+  .opt:hover, .opt.selected {
+    border-color: var(--green); background: var(--green-light);
+  }
+  .field { width: 100%; padding: 12px 14px; border: 1px solid #d6d3d1;
+    border-radius: 8px; font-family: inherit; font-size: 15px; margin-bottom: 12px; }
+  .field:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 3px rgba(21,128,61,0.1); }
+  .controls { display: flex; gap: 10px; margin-top: 20px; }
+  .btn {
+    padding: 12px 22px; border-radius: 8px; font-weight: 600; cursor: pointer;
+    border: none; font-family: inherit; font-size: 15px; transition: all 0.12s;
+  }
+  .btn.primary { background: var(--green); color: var(--white); flex: 1; }
+  .btn.primary:hover { background: var(--green-dark); }
+  .btn.ghost { background: transparent; color: var(--ink-dim); }
+  .btn.ghost:hover { color: var(--ink); }
+  .close-x {
+    position: absolute; top: 16px; right: 16px; background: none; border: none;
+    font-size: 24px; cursor: pointer; color: var(--ink-mute); line-height: 1;
+  }
+  @media (max-width: 900px) {
+    .router { grid-template-columns: repeat(2, 1fr); }
+    .trust { flex-direction: column; align-items: flex-start; gap: 16px; }
+  }
+  @media (max-width: 768px) {
+    body, .stage { overflow-y: auto; height: auto; min-height: 100vh; }
+    header { padding: 14px 20px; }
+    .wordmark { font-size: 19px; }
+    .header-right .phone-label { display: none; }
+    .hero { padding: 24px 20px; }
+    .logos span { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+  <div class="draft-banner">Preview build · v1 · final copy and photography swap in after discovery with Mark</div>
+  <div class="stage">
+    <div class="bg-pattern"></div>
+    <div class="content">
+      <header>
+        <div class="wordmark">REPRO<span class="dot">.</span></div>
+        <div class="header-right">
+          <a href="tel:+16178208681" class="phone"><span class="phone-label">Call </span>(617) 820-8681</a>
+          <button class="talk-button" onclick="open_wizard()">Talk to Mark</button>
+        </div>
+      </header>
+      <div class="hero">
+        <h1>Fast-track restaurant builders.<br><span class="pop">New store open in 14 days.</span></h1>
+        <p class="subline">New England's QSR refresh and remodel specialist. Dunkin', Jersey Mike's, Dave's Hot Chicken, Wayback Burgers, Smith &amp; Wollensky — over 30 years of work that opens on time.</p>
+        <div class="router">
+          <button class="tile" onclick="open_wizard('new-location')">
+            <div class="tile-icon">+</div>
+            <div class="tile-label">I'm opening a new restaurant location</div>
+          </button>
+          <button class="tile" onclick="open_wizard('remodel')">
+            <div class="tile-icon">&#x21bb;</div>
+            <div class="tile-label">I'm remodeling an existing restaurant</div>
+          </button>
+          <button class="tile" onclick="open_wizard('multi-unit')">
+            <div class="tile-icon">&#x25a6;</div>
+            <div class="tile-label">I'm building or rolling out multi-unit</div>
+          </button>
+          <button class="tile" onclick="open_wizard('residential')">
+            <div class="tile-icon">&#x2302;</div>
+            <div class="tile-label">I'm doing a residential or custom build</div>
+          </button>
+        </div>
+        <div class="trust">
+          <div class="logos">
+            <span>Dunkin'</span>
+            <span>Jersey Mike's</span>
+            <span>Dave's Hot Chicken</span>
+            <span>Wayback Burgers</span>
+            <span>Smith &amp; Wollensky</span>
+            <span>Family Dollar</span>
+          </div>
+          <div class="stat-block">
+            <div class="stat">30+ years</div>
+            <div class="stat-label">Owner-led, New England</div>
+          </div>
+          <blockquote class="quote">
+            "Repro built our Danvers Dunkin' in 14 days. On time. Clean. Done."
+            <cite>— [Testimonial pending Mark's intake]</cite>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="backdrop" id="bd">
+    <div class="wizard" style="position: relative;">
+      <button class="close-x" onclick="close_wizard()" aria-label="Close">&times;</button>
+      <div class="progress">
+        <div id="p1" class="done"></div>
+        <div id="p2"></div>
+        <div id="p3"></div>
+        <div id="p4"></div>
+        <div id="p5"></div>
+      </div>
+      <div class="step active" id="s1">
+        <h2>What are you starting?</h2>
+        <p class="hint">Tap the closest fit — you can refine later.</p>
+        <div class="options">
+          <button class="opt" data-v="new-location" onclick="pick(this,'intent')">A new restaurant location</button>
+          <button class="opt" data-v="remodel" onclick="pick(this,'intent')">A restaurant remodel</button>
+          <button class="opt" data-v="multi-unit" onclick="pick(this,'intent')">Multi-unit / mixed-use</button>
+          <button class="opt" data-v="residential" onclick="pick(this,'intent')">Residential / custom</button>
+        </div>
+      </div>
+      <div class="step" id="s2">
+        <h2>What brand?</h2>
+        <p class="hint">If franchise — which one? If independent, just say "independent."</p>
+        <input class="field" id="brand" placeholder="Dunkin', Jersey Mike's, independent, etc.">
+      </div>
+      <div class="step" id="s3">
+        <h2>Where?</h2>
+        <p class="hint">City or town. We serve all of New England plus parts of Florida.</p>
+        <input class="field" id="location" placeholder="Peabody MA, Providence RI, etc.">
+      </div>
+      <div class="step" id="s4">
+        <h2>When does it need to be open?</h2>
+        <p class="hint">Target opening date or window. "Asap" works.</p>
+        <input class="field" id="open_date" placeholder="July 1, 2026 — or 'asap'">
+      </div>
+      <div class="step" id="s5">
+        <h2>Who should we call?</h2>
+        <input class="field" id="name" placeholder="Your name">
+        <input class="field" id="phone" type="tel" placeholder="Phone">
+        <input class="field" id="email" type="email" placeholder="Email">
+      </div>
+      <div class="controls">
+        <button class="btn ghost" onclick="back_step()" id="backBtn" style="display:none">Back</button>
+        <button class="btn primary" onclick="next_step()" id="nextBtn">Continue</button>
+      </div>
+    </div>
+  </div>
+<script>
+  var state = { intent: null, brand: '', location: '', open_date: '', name: '', phone: '', email: '' };
+  var current = 1;
+  var total = 5;
+
+  function open_wizard(intent) {
+    if (intent) {
+      state.intent = intent;
+      document.querySelectorAll('#s1 .opt').forEach(function(b) {
+        if (b.dataset.v === intent) { b.classList.add('selected'); }
+      });
+      current = 2; render();
+    } else {
+      current = 1; render();
+    }
+    document.getElementById('bd').classList.add('open');
+  }
+  function close_wizard() { document.getElementById('bd').classList.remove('open'); }
+  function render() {
+    for (var i = 1; i <= total; i++) {
+      document.getElementById('s'+i).classList.toggle('active', i === current);
+      document.getElementById('p'+i).classList.toggle('done', i <= current);
+    }
+    document.getElementById('backBtn').style.display = current > 1 ? '' : 'none';
+    document.getElementById('nextBtn').textContent = current === total ? 'Send to Repro' : 'Continue';
+  }
+  function pick(el, key) {
+    el.parentNode.querySelectorAll('.opt').forEach(function(b) { b.classList.remove('selected'); });
+    el.classList.add('selected');
+    state[key] = el.dataset.v;
+    setTimeout(next_step, 200);
+  }
+  function next_step() {
+    if (current === 2) state.brand = document.getElementById('brand').value;
+    if (current === 3) state.location = document.getElementById('location').value;
+    if (current === 4) state.open_date = document.getElementById('open_date').value;
+    if (current === 5) {
+      state.name = document.getElementById('name').value;
+      state.phone = document.getElementById('phone').value;
+      state.email = document.getElementById('email').value;
+      return submit();
+    }
+    if (current < total) { current++; render(); }
+  }
+  function back_step() { if (current > 1) { current--; render(); } }
+  function submit() {
+    var body = 'New Repro project inquiry\n\n';
+    body += 'Intent: ' + (state.intent || '') + '\n';
+    body += 'Brand: ' + state.brand + '\n';
+    body += 'Location: ' + state.location + '\n';
+    body += 'Target open date: ' + state.open_date + '\n';
+    body += 'Name: ' + state.name + '\n';
+    body += 'Phone: ' + state.phone + '\n';
+    body += 'Email: ' + state.email + '\n';
+    var subject = 'New Repro inquiry — ' + state.name + ' / ' + state.brand;
+    var mailto = 'mailto:mark@reproconstruction.com?cc=fructifyme@gmail.com&subject=' + encodeURIComponent(subject) + '&body=' + encodeURIComponent(body);
+    window.location.href = mailto;
+  }
+</script>
+</body>
+</html>
