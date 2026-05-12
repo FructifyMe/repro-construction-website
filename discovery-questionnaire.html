@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Repro Construction — Website Discovery | Fructify LLC</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; }
+  html { -webkit-text-size-adjust: 100%; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    color: #1c1917;
+    background: #fafaf9;
+    line-height: 1.55;
+    font-size: 16px;
+  }
+  .container { max-width: 760px; margin: 0 auto; padding: 48px 24px 96px; }
+  header { border-bottom: 1px solid #e7e5e4; padding-bottom: 28px; margin-bottom: 36px; }
+  .brand {
+    font-size: 13px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #15803d; margin-bottom: 8px;
+  }
+  h1 {
+    font-size: 30px; font-weight: 700; margin: 0 0 6px;
+    color: #1c1917; line-height: 1.2; letter-spacing: -0.01em;
+  }
+  .subtitle { color: #57534e; font-size: 15px; margin: 0; }
+  .intro { background: #ffffff; border: 1px solid #e7e5e4; border-radius: 8px; padding: 20px 24px; margin-bottom: 40px; }
+  .intro p { margin: 0 0 10px; }
+  .intro p:last-child { margin-bottom: 0; }
+  .intro a { color: #15803d; }
+  fieldset {
+    border: 1px solid #e7e5e4; border-radius: 8px; padding: 24px;
+    margin-bottom: 28px; background: #ffffff;
+  }
+  legend {
+    font-weight: 700; font-size: 14px; letter-spacing: 0.06em; text-transform: uppercase;
+    color: #15803d; padding: 0 8px; background: #fafaf9;
+    border: 1px solid #e7e5e4; border-radius: 4px;
+  }
+  .question { margin-bottom: 22px; }
+  .question:last-child { margin-bottom: 0; }
+  label.q {
+    display: block; font-weight: 600; font-size: 15px;
+    margin-bottom: 8px; color: #1c1917;
+  }
+  .hint { display: block; font-size: 13px; color: #78716c; margin-bottom: 10px; font-weight: 400; }
+  input[type="text"], input[type="email"], input[type="tel"], textarea, select {
+    width: 100%; padding: 10px 12px;
+    border: 1px solid #d6d3d1; border-radius: 6px;
+    font-family: inherit; font-size: 15px; color: #1c1917; background: #ffffff;
+    transition: border-color 0.15s;
+  }
+  input:focus, textarea:focus, select:focus {
+    outline: none; border-color: #15803d; box-shadow: 0 0 0 3px rgba(21, 128, 61, 0.1);
+  }
+  textarea { min-height: 90px; resize: vertical; }
+  .radio-group, .check-group { display: flex; flex-wrap: wrap; gap: 8px 16px; }
+  .radio-group label, .check-group label {
+    display: inline-flex; align-items: center; gap: 6px;
+    font-size: 14px; font-weight: 400; cursor: pointer;
+    padding: 6px 12px; border: 1px solid #d6d3d1; border-radius: 6px;
+    background: #ffffff; transition: all 0.15s;
+  }
+  .radio-group label:hover, .check-group label:hover { border-color: #15803d; }
+  .radio-group input, .check-group input { margin: 0; accent-color: #15803d; }
+  .contact-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  @media (max-width: 540px) { .contact-row { grid-template-columns: 1fr; } }
+  button {
+    width: 100%; padding: 14px 24px;
+    background: #15803d; color: #ffffff; border: none; border-radius: 8px;
+    font-family: inherit; font-size: 16px; font-weight: 600; cursor: pointer;
+    transition: background 0.15s;
+  }
+  button:hover { background: #166534; }
+  footer { margin-top: 48px; padding-top: 24px; border-top: 1px solid #e7e5e4; text-align: center; color: #78716c; font-size: 13px; }
+  .send-note { font-size: 13px; color: #78716c; margin-top: 12px; text-align: center; }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <div class="brand">Fructify LLC · Discovery</div>
+    <h1>Repro Construction Website — Discovery</h1>
+    <p class="subtitle">Prepared for Mark Geissler · May 2026</p>
+  </header>
+
+  <div class="intro">
+    <p>About 15 minutes. The answers below shape the entire new <strong>reproconstruction.com</strong> build — the tighter the answers, the sharper the site. Rough numbers and bullet points are fine; no need for polish.</p>
+    <p>When you're done, click <strong>Send to Mike</strong> at the bottom. Your email client will open with answers prefilled — just hit send. If anything's unclear, leave it blank and we'll cover it on the call.</p>
+  </div>
+
+  <form id="discoveryForm">
+
+    <fieldset>
+      <legend>A. QSR experience</legend>
+
+      <div class="question">
+        <label class="q" for="qsr_brands">Which QSR / restaurant brands has Repro completed projects for?</label>
+        <span class="hint">Dunkin' confirmed — what else? Jersey Mike's, Wayback, Dave's Hot Chicken, Smith &amp; Wollensky, anything we missed?</span>
+        <textarea id="qsr_brands" name="qsr_brands"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q" for="project_counts">Roughly how many projects total, broken out by brand if you can?</label>
+        <span class="hint">Even ranges are useful — "40+ Dunkin' refreshes, 6 Jersey Mike's, a handful of others."</span>
+        <textarea id="project_counts" name="project_counts"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q" for="footprint">Geographic footprint — which states, and roughly how concentrated where?</label>
+        <span class="hint">MA, NH, RI, ME, VT, CT, FL — anywhere else? Where's the center of gravity?</span>
+        <textarea id="footprint" name="footprint"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>B. Revenue mix and focus</legend>
+
+      <div class="question">
+        <label class="q" for="revenue_mix">Rough percentage of revenue from each vertical?</label>
+        <span class="hint">QSR / multi-unit residential / single-family residential / commercial TI / other — ballpark is fine.</span>
+        <textarea id="revenue_mix" name="revenue_mix"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q">On the new site, how should we handle residential and multi-unit?</label>
+        <span class="hint">Tighter positioning = more AI / Google citations. Generic GCs don't get recommended for "Dunkin' refresh in MA."</span>
+        <div class="radio-group">
+          <label><input type="radio" name="residential_treatment" value="qsr-only"> QSR only — drop the rest</label>
+          <label><input type="radio" name="residential_treatment" value="qsr-primary"> QSR primary, others as sidebar mention</label>
+          <label><input type="radio" name="residential_treatment" value="equal"> Keep all three equal</label>
+          <label><input type="radio" name="residential_treatment" value="not-sure"> Not sure — let's discuss</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q" for="growth_priority">What do you most want to GROW over the next 2–3 years?</label>
+        <textarea id="growth_priority" name="growth_priority"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>C. How leads come in today</legend>
+
+      <div class="question">
+        <label class="q">How do most new project leads reach Repro today? (check all that apply)</label>
+        <div class="check-group">
+          <label><input type="checkbox" name="lead_sources" value="referral"> Referral / word of mouth</label>
+          <label><input type="checkbox" name="lead_sources" value="repeat"> Repeat client</label>
+          <label><input type="checkbox" name="lead_sources" value="franchise"> Franchisor relationship</label>
+          <label><input type="checkbox" name="lead_sources" value="web"> Website / Google</label>
+          <label><input type="checkbox" name="lead_sources" value="gbp"> Google Business Profile</label>
+          <label><input type="checkbox" name="lead_sources" value="social"> Social media</label>
+          <label><input type="checkbox" name="lead_sources" value="ads"> Paid ads</label>
+          <label><input type="checkbox" name="lead_sources" value="networking"> Networking / events</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q" for="funnel_leak">Where does the sales process tend to stall or leak?</label>
+        <span class="hint">"Lots of inquiries but few qualified" / "qualified but slow to close" / "we close fast but pipeline is thin" — whatever it is.</span>
+        <textarea id="funnel_leak" name="funnel_leak"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>D. Brand and visual identity</legend>
+
+      <div class="question">
+        <label class="q" for="brand_assets">Do you have a logo file, brand colors, or style guide you want preserved?</label>
+        <span class="hint">If yes, just describe — we'll grab the files separately. If no, we're free to recommend.</span>
+        <textarea id="brand_assets" name="brand_assets"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q">Tagline — "Transforming a client's vision into reality" — keep, retire, or rework?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="tagline" value="keep"> Keep</label>
+          <label><input type="radio" name="tagline" value="rework"> Rework</label>
+          <label><input type="radio" name="tagline" value="retire"> Retire / replace</label>
+          <label><input type="radio" name="tagline" value="open"> Open to suggestions</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q">Is the existing "Repro" wordmark sacred, or open to a refresh?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="wordmark" value="sacred"> Keep as-is</label>
+          <label><input type="radio" name="wordmark" value="modernize"> Modernize, same feel</label>
+          <label><input type="radio" name="wordmark" value="open"> Open to a new mark</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q" for="color_preference">Color preference for the new site? Or anything to avoid?</label>
+        <textarea id="color_preference" name="color_preference"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>E. Proof — photography, testimonials, flagship projects</legend>
+
+      <div class="question">
+        <label class="q" for="photography">Any specific photos or projects you definitely want featured? Anything off-limits?</label>
+        <span class="hint">Optional — we'll pull from your existing site and socials by default. Just flag anything we shouldn't miss, or anything you'd rather not show.</span>
+        <textarea id="photography" name="photography"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q" for="testimonials">Three named clients we could pursue for testimonials — names and companies are enough.</label>
+        <span class="hint">Ideally a QSR franchisee, a multi-unit developer, and one repeat client. We'll draft the ask.</span>
+        <textarea id="testimonials" name="testimonials"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q" for="flagship_projects">Top 3 flagship projects to feature on the site.</label>
+        <span class="hint">Danvers Dunkin' 14-day is one. What are the other two you're proudest of?</span>
+        <textarea id="flagship_projects" name="flagship_projects"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>F. Current tech and logistics</legend>
+
+      <div class="question">
+        <label class="q" for="current_tech">Current site CMS, hosting, any CRM or lead-tracking, email/calendar platform?</label>
+        <span class="hint">Best guesses are fine — we'll verify. "WordPress on GoDaddy, no CRM, Gmail" is a perfectly useful answer.</span>
+        <textarea id="current_tech" name="current_tech"></textarea>
+      </div>
+
+      <div class="question">
+        <label class="q">Target launch window?</label>
+        <div class="radio-group">
+          <label><input type="radio" name="timeline" value="30"> Within 30 days</label>
+          <label><input type="radio" name="timeline" value="60"> 30–60 days</label>
+          <label><input type="radio" name="timeline" value="90"> 60–90 days</label>
+          <label><input type="radio" name="timeline" value="q3"> Q3 2026 or later</label>
+          <label><input type="radio" name="timeline" value="flex"> Flexible</label>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q" for="approvers">Who else is involved in approving the new site direction?</label>
+        <span class="hint">Shari? William? Anyone else? Helps us know who to loop in and when.</span>
+        <textarea id="approvers" name="approvers"></textarea>
+      </div>
+    </fieldset>
+
+    <fieldset>
+      <legend>G. Confirm contact</legend>
+
+      <div class="question">
+        <div class="contact-row">
+          <div>
+            <label class="q" for="contact_name">Name</label>
+            <input type="text" id="contact_name" name="contact_name" placeholder="Mark Geissler">
+          </div>
+          <div>
+            <label class="q" for="contact_email">Email</label>
+            <input type="email" id="contact_email" name="contact_email" placeholder="mark@reproconstruction.com">
+          </div>
+        </div>
+      </div>
+
+      <div class="question">
+        <label class="q" for="contact_phone">Best phone number to reach you</label>
+        <input type="tel" id="contact_phone" name="contact_phone" placeholder="(617) 820-8681">
+      </div>
+
+      <div class="question">
+        <label class="q" for="anything_else">Anything else we should know before we start?</label>
+        <textarea id="anything_else" name="anything_else"></textarea>
+      </div>
+    </fieldset>
+
+    <button type="submit">Send to Mike</button>
+    <p class="send-note">Opens your email client with answers prefilled. If your browser doesn't auto-open it, copy the body and email it to <a href="mailto:fructifyme@gmail.com">fructifyme@gmail.com</a>.</p>
+  </form>
+
+  <footer>
+    <p>Fructify LLC · Strategy + Build for Owner-Led Businesses · fructifyme@gmail.com</p>
+  </footer>
+</div>
+
+<script>
+  document.getElementById('discoveryForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    var form = e.target;
+    var labelMap = {
+      qsr_brands: "A1. QSR brands worked with",
+      project_counts: "A2. Project counts by brand",
+      footprint: "A3. Geographic footprint",
+      revenue_mix: "B1. Revenue mix",
+      residential_treatment: "B2. Residential/multi-unit treatment",
+      growth_priority: "B3. Growth priority",
+      lead_sources: "C1. Lead sources today",
+      funnel_leak: "C2. Where the funnel leaks",
+      brand_assets: "D1. Existing brand assets",
+      tagline: "D2. Tagline decision",
+      wordmark: "D3. Wordmark decision",
+      color_preference: "D4. Color preference",
+      photography: "E1. Job photography available",
+      testimonials: "E2. Testimonial candidates",
+      flagship_projects: "E3. Flagship projects",
+      current_tech: "F1. Current tech stack",
+      timeline: "F2. Target launch window",
+      approvers: "F3. Other approvers",
+      contact_name: "G. Name",
+      contact_email: "G. Email",
+      contact_phone: "G. Phone",
+      anything_else: "G. Anything else"
+    };
+    var body = "Repro Construction Website Discovery — completed by " +
+               (form.contact_name.value || "Mark") + "\n\n";
+    var groupedChecks = {};
+    var formData = new FormData(form);
+    formData.forEach(function(value, key) {
+      if (form.elements[key] && form.elements[key].length && form.elements[key][0] && form.elements[key][0].type === "checkbox") {
+        if (!groupedChecks[key]) groupedChecks[key] = [];
+        groupedChecks[key].push(value);
+      }
+    });
+    Object.keys(labelMap).forEach(function(key) {
+      var label = labelMap[key];
+      var value;
+      if (groupedChecks[key]) {
+        value = groupedChecks[key].join(", ");
+      } else {
+        var el = form.elements[key];
+        if (!el) return;
+        value = el.value || "";
+      }
+      if (value && value.trim()) {
+        body += label + "\n" + value.trim() + "\n\n";
+      }
+    });
+    var subject = "Repro Website Discovery — " + (form.contact_name.value || "Mark");
+    var mailto = "mailto:fructifyme@gmail.com" +
+                 "?subject=" + encodeURIComponent(subject) +
+                 "&body=" + encodeURIComponent(body);
+    window.location.href = mailto;
+  });
+</script>
+</body>
+</html>
