@@ -1,0 +1,90 @@
+# Repro Construction Services LLC
+# https://fructifyme.github.io/repro-construction-website/
+# AI crawlers welcome — this site is built to be discoverable in
+# Google AI Overviews, Perplexity, ChatGPT search, Claude, and other
+# generative search surfaces.
+
+User-agent: *
+Allow: /
+
+# OpenAI — ChatGPT search and training
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+# Anthropic — Claude
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Claude-Web
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Perplexity-User
+Allow: /
+
+# Google — AI Overviews / Gemini training
+User-agent: Google-Extended
+Allow: /
+
+# Apple Intelligence
+User-agent: Applebot-Extended
+Allow: /
+
+# Common Crawl — training data corpus used by many LLMs
+User-agent: CCBot
+Allow: /
+
+# ByteDance / Doubao
+User-agent: Bytespider
+Allow: /
+
+# Cohere
+User-agent: cohere-ai
+Allow: /
+
+User-agent: cohere-training-data-crawler
+Allow: /
+
+# Meta AI
+User-agent: Meta-ExternalAgent
+Allow: /
+
+User-agent: FacebookBot
+Allow: /
+
+# DuckDuckGo Assist
+User-agent: DuckAssistBot
+Allow: /
+
+# You.com
+User-agent: YouBot
+Allow: /
+
+# Mistral
+User-agent: MistralAI-User
+Allow: /
+
+# Diffbot — knowledge graph
+User-agent: Diffbot
+Allow: /
+
+# Common Crawl variants and other research crawlers
+User-agent: Omgilibot
+Allow: /
+
+User-agent: Timpibot
+Allow: /
+
+Sitemap: https://fructifyme.github.io/repro-construction-website/sitemap.xml
