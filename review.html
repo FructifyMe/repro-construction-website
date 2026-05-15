@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Repro site — where it stands</title>
+  <meta name="description" content="A 30-day status update from Fructify. The site is live in preview, positioning is locked, and here's exactly what Mark and Nick need to provide to finish it." />
+  <meta name="robots" content="noindex,nofollow" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Your Repro site — where it stands" />
+  <meta property="og:description" content="A 30-day status update from Fructify. The site is live in preview, positioning is locked, and here's exactly what Mark and Nick need to provide to finish it." />
+  <meta property="og:type" content="article" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --color-red-primary: #C8102E;
+      --color-red-deep: #9A0C23;
+      --color-red-tint: #FFF1F3;
+      --color-black: #0A0A0A;
+      --color-white: #FFFFFF;
+      --color-off-white: #F7F6F3;
+      --color-gray-900: #1A1A1A;
+      --color-gray-700: #3D3D3D;
+      --color-gray-500: #737373;
+      --color-gray-300: #D4D4D4;
+      --color-gray-100: #EDEBE7;
+      --bg-canvas: #FFFFFF;
+      --bg-paper: #F7F6F3;
+      --bg-ink: #0A0A0A;
+      --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      --container-max: 720px;
+      --radius-default: 2px;
+      --border-editorial: 4px solid var(--color-red-primary);
+      --ease-standard: cubic-bezier(0.4, 0, 0.2, 1);
+      --duration-micro: 150ms;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
+    body {
+      margin: 0;
+      font-family: var(--font-sans);
+      font-size: 17px;
+      line-height: 1.6;
+      color: var(--color-gray-900);
+      background: var(--bg-canvas);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
+
+    a { color: var(--color-black); text-decoration: underline; text-decoration-color: var(--color-red-primary); text-decoration-thickness: 1.5px; text-underline-offset: 4px; transition: text-decoration-thickness var(--duration-micro) var(--ease-standard); }
+    a:hover { text-decoration-thickness: 2px; }
+
+    /* === Header === */
+    .site-header {
+      background: var(--bg-canvas);
+      border-bottom: 1px solid var(--color-gray-300);
+      position: sticky;
+      top: 0;
+      z-index: 50;
+    }
+    .header-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 16px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .wordmark {
+      font-weight: 800;
+      font-size: 22px;
+      letter-spacing: -0.02em;
+      color: var(--color-black);
+      text-decoration: none;
+    }
+    .wordmark .dot { color: var(--color-red-primary); }
+    .header-meta {
+      font-size: 12px;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+      color: var(--color-gray-500);
+    }
+
+    /* === Article === */
+    .article {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 48px 20px 96px;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--color-red-primary);
+      margin-bottom: 16px;
+    }
+
+    .editorial-rule {
+      width: 64px;
+      height: 4px;
+      background: var(--color-red-primary);
+      margin: 0 0 24px;
+      border: 0;
+    }
+
+    h1 {
+      font-size: 40px;
+      line-height: 1.02;
+      letter-spacing: -0.025em;
+      font-weight: 700;
+      color: var(--color-black);
+      margin: 0 0 24px;
+    }
+
+    .lede {
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--color-gray-700);
+      margin: 0 0 32px;
+    }
+
+    .meta-strip {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px 24px;
+      padding: 16px 0;
+      border-top: 1px solid var(--color-gray-300);
+      border-bottom: 1px solid var(--color-gray-300);
+      margin-bottom: 48px;
+      font-size: 13px;
+      color: var(--color-gray-500);
+      letter-spacing: 0.02em;
+    }
+    .meta-strip strong { color: var(--color-black); font-weight: 600; }
+
+    h2 {
+      font-size: 28px;
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 600;
+      color: var(--color-black);
+      margin: 64px 0 24px;
+    }
+
+    h3 {
+      font-size: 18px;
+      line-height: 1.3;
+      font-weight: 600;
+      color: var(--color-black);
+      margin: 32px 0 12px;
+    }
+
+    p { margin: 0 0 16px; }
+    p strong { font-weight: 600; color: var(--color-black); }
+
+    /* === Built list === */
+    .built-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .built-list li {
+      padding: 24px 0;
+      border-top: 2px solid var(--color-black);
+    }
+    .built-list li:last-child { border-bottom: 1px solid var(--color-gray-300); }
+    .built-list .built-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--color-black);
+      display: block;
+      margin-bottom: 6px;
+    }
+    .built-list .built-count {
+      color: var(--color-red-primary);
+      font-weight: 700;
+    }
+    .built-list p { font-size: 16px; color: var(--color-gray-700); margin: 0; }
+
+    /* === Action lists === */
+    .action-group {
+      background: var(--bg-paper);
+      padding: 24px;
+      margin-bottom: 24px;
+      border-left: 4px solid var(--color-red-primary);
+    }
+    .action-group .who {
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: var(--color-red-primary);
+      margin-bottom: 4px;
+    }
+    .action-group h3 {
+      margin: 0 0 16px;
+      font-size: 20px;
+    }
+    .action-group ol {
+      margin: 0;
+      padding-left: 24px;
+    }
+    .action-group ol li {
+      margin-bottom: 12px;
+      font-size: 16px;
+      line-height: 1.5;
+      color: var(--color-gray-900);
+    }
+    .action-group ol li::marker {
+      color: var(--color-red-primary);
+      font-weight: 600;
+    }
+    .action-group .flag {
+      display: inline-block;
+      font-weight: 600;
+      color: var(--color-red-deep);
+    }
+
+    /* === Options block === */
+    .options {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0;
+    }
+    .option {
+      padding: 16px 20px;
+      border: 1.5px solid var(--color-black);
+      border-radius: var(--radius-default);
+    }
+    .option strong {
+      display: block;
+      font-size: 15px;
+      margin-bottom: 4px;
+    }
+    .option span {
+      font-size: 14px;
+      color: var(--color-gray-700);
+    }
+
+    /* === Preview CTA === */
+    .preview-cta {
+      background: var(--bg-ink);
+      color: var(--color-white);
+      padding: 32px 24px;
+      margin: 48px 0;
+    }
+    .preview-cta .eyebrow { color: var(--color-red-primary); }
+    .preview-cta h3 {
+      color: var(--color-white);
+      margin: 0 0 16px;
+      font-size: 22px;
+    }
+    .preview-cta p {
+      color: #C9C9C9;
+      margin-bottom: 20px;
+    }
+    .btn-primary {
+      display: inline-block;
+      background: var(--color-red-primary);
+      color: var(--color-white);
+      padding: 14px 28px;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-decoration: none;
+      border-radius: var(--radius-default);
+      transition: background var(--duration-micro) var(--ease-standard);
+    }
+    .btn-primary:hover { background: var(--color-red-deep); }
+
+    /* === Closing === */
+    .closing {
+      margin-top: 64px;
+      padding-top: 32px;
+      border-top: var(--border-editorial);
+    }
+    .closing p {
+      font-size: 18px;
+      line-height: 1.5;
+      color: var(--color-gray-900);
+    }
+    .signature {
+      margin-top: 24px;
+      font-size: 14px;
+      color: var(--color-gray-500);
+    }
+    .signature strong { color: var(--color-black); font-weight: 600; }
+
+    /* === Footer === */
+    .site-footer {
+      background: var(--bg-ink);
+      color: #C9C9C9;
+      padding: 32px 20px;
+      font-size: 14px;
+    }
+    .footer-inner {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: space-between;
+      align-items: baseline;
+    }
+    .site-footer .wordmark { color: var(--color-white); }
+    .site-footer a { color: var(--color-white); }
+
+    /* === Mobile === */
+    @media (max-width: 540px) {
+      h1 { font-size: 32px; }
+      h2 { font-size: 24px; margin: 48px 0 20px; }
+      .article { padding: 32px 20px 64px; }
+      .meta-strip { flex-direction: column; gap: 6px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { transition-duration: 0ms !important; animation-duration: 0ms !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a href="#top" class="wordmark">REPRO<span class="dot">.</span></a>
+      <span class="header-meta">Status update &middot; 2026-05-15</span>
+    </div>
+  </header>
+
+  <main class="article" id="top">
+
+    <span class="eyebrow">Project status &middot; Fructify &times; Repro</span>
+    <hr class="editorial-rule" />
+    <h1>Your Repro site — where it stands.</h1>
+    <p class="lede">Three weeks in, 30-day launch on track for ~2026-06-14. The site is live in preview — click anything, every page is real and built. Positioning is locked from your discovery answers: the site leads with QSR specialist credibility — Inspire Brands, Dunkin', Jersey Mike's, Works Cafe, Wayback, Yella, Zo — and frames every section around defending Repro's premium against cheaper bids.</p>
+
+    <div class="meta-strip">
+      <span><strong>Date</strong> 2026-05-15</span>
+      <span><strong>Target launch</strong> ~2026-06-14</span>
+      <span><strong>For</strong> Mark &amp; Nick</span>
+    </div>
+
+    <div class="preview-cta">
+      <span class="eyebrow">Live preview</span>
+      <h3>The whole site is clickable right now.</h3>
+      <p>Open it on your phone. Tap into any brand page, any service area, any case study. Push back on anything that doesn't sound like you.</p>
+      <a href="https://fructifyme.github.io/repro-construction-website/" class="btn-primary" target="_blank" rel="noopener">Open the preview &rarr;</a>
+    </div>
+
+    <h2>What's built</h2>
+    <p>What's left to ship is mostly content from you. Here's the full inventory.</p>
+
+    <ul class="built-list">
+      <li>
+        <span class="built-title">Homepage <span class="built-count">&middot; live</span></span>
+        <p>Hero leads with the QSR builder positioning. Four pillars defend the premium — brand-spec literacy, schedule certainty, owner-side accountability, named operators on record. Three flagship project tiles. Three named-operator testimonials with draft copy where we had a quote and placeholders where we don't.</p>
+      </li>
+      <li>
+        <span class="built-title">Brand-specific pages <span class="built-count">&middot; 5</span></span>
+        <p>Dunkin', Jersey Mike's, Works Cafe, Wayback, Inspire Brands. Each one ranks for "[brand] construction Massachusetts" and answers the questions a franchisee or brand ops director asks before requesting a bid.</p>
+      </li>
+      <li>
+        <span class="built-title">Service-area pages <span class="built-count">&middot; 8</span></span>
+        <p>Every city in your North Shore and Boston catchment has its own page — Peabody, Danvers, Salem, Beverly, Westford, Somerville, Boston, North Shore. These win local search.</p>
+      </li>
+      <li>
+        <span class="built-title">Vertical pages <span class="built-count">&middot; 3</span></span>
+        <p>Restaurant leads. Multi-unit and residential are supporting lanes, sized accordingly.</p>
+      </li>
+      <li>
+        <span class="built-title">Case studies <span class="built-count">&middot; 3</span></span>
+        <p>Works Cafe Westford is the full template — the hero asset. Somerville Dunkin' and Salem Canal St are skeletons waiting on details from you.</p>
+      </li>
+      <li>
+        <span class="built-title">Concierge intake <span class="built-count">&middot; 5-step</span></span>
+        <p>Brand &rarr; Location &rarr; Scope &rarr; Timeline &rarr; Contact. Pre-qualifies inquiries before they hit your inbox. Nobody else in your competitive set has anything like this — Groom, Cornerstone, Cafco all send you to a generic contact form.</p>
+      </li>
+      <li>
+        <span class="built-title">AI search infrastructure</span>
+        <p>Your site is engineered for Google's AI Overviews, Perplexity, and ChatGPT search — not just traditional Google. When a franchisee asks an AI assistant "who builds Dunkin' stores in Massachusetts," Repro should be in the answer.</p>
+      </li>
+    </ul>
+
+    <h2>What we need from you</h2>
+    <p>The hero photography and the case study numbers are the two things gating launch quality. Everything below is grouped by who owns it.</p>
+
+    <div class="action-group">
+      <div class="who">From Nick &middot; most urgent</div>
+      <h3>Hero photography depends on this</h3>
+      <ol>
+        <li>Run the LinkedIn scrape prompt at <code>chrome-prompts/nick-linkedin-scrape.md</code> — or just send Mike all your project photos directly, whatever's easier.</li>
+        <li>Works Cafe Westford project numbers: square footage, target-open vs. actual-open dates, project value, any schedule variance metric you're comfortable publishing.</li>
+        <li>Same numbers for the Somerville Dunkin' (74 Middlesex Ave) and Salem Canal St projects.</li>
+        <li>Confirm Chris Sibulkin's start date and a short bio sentence — he's now listed on the team page as superintendent.</li>
+      </ol>
+    </div>
+
+    <div class="action-group">
+      <div class="who">From Richard, Jason, Philip &middot; Nick to chase</div>
+      <h3>Testimonials and permissions</h3>
+      <ol start="5">
+        <li>A 2-4 sentence testimonial quote from each. Mike has a DRAFT for Richard already; the other two are placeholder text.</li>
+        <li>Permission to use their name, brand, and ideally a portrait photo (environmental — in their restaurant, not a headshot).</li>
+        <li><span class="flag">Important clarification:</span> Richard French is the founder/CEO of The Works Cafe, not a franchisee — Nick called him a franchisee in discovery. Public sources confirm he founded the brand in 1988. Does Westford have a separate local franchisee operator we should also name?</li>
+      </ol>
+    </div>
+
+    <div class="action-group">
+      <div class="who">From Mark</div>
+      <h3>Owner-level approvals</h3>
+      <ol start="8">
+        <li>Tagline pick from the 7 candidates in the positioning brief — or veto all 7 and we draft more.</li>
+        <li>Real Repro wordmark file. SVG preferred, high-res PNG OK. The site uses a text placeholder right now.</li>
+        <li>Confirm the phone number on file — <strong>(617) 820-8681</strong>. We pulled it from the current site and want to be sure.</li>
+        <li>Approve or amend the 11 placeholder tokens in the Works Cafe Westford case study (square footage, dates, dollar values, brand-spec callouts).</li>
+        <li>Multi-unit and residential project examples (2-3 each) — only if you want those verticals visible at launch. If not, we de-emphasize them and lean harder on restaurants.</li>
+      </ol>
+    </div>
+
+    <h2>What's still being built</h2>
+    <p>Short list. The cost-of-cheaper-bid insights post — the hero argument piece that pre-sells against the funnel leak. A few utility pages: 404, about, contact, privacy. Pre-launch QA across every page. All on track for 2026-06-14.</p>
+
+    <h2>How to give Mike what he needs</h2>
+    <p>Three options, pick the one that fits your week.</p>
+    <div class="options">
+      <div class="option"><strong>Reply to Mike's email</strong><span>with the answers above. Easiest.</span></div>
+      <div class="option"><strong>Drop everything into a shared folder</strong><span>Mike will set one up if Nick wants.</span></div>
+      <div class="option"><strong>Schedule a 30-minute call</strong><span>Nick walks Mike through what he has and Mike captures it live.</span></div>
+    </div>
+
+    <div class="closing">
+      <p>This is your site. Every page reflects how <em>you</em> sell — owner-side, brand-spec literate, schedule-certain. Push back on anything that doesn't sound like you.</p>
+      <p class="signature"><strong>Mike Farls</strong> &middot; Fructify &middot; <a href="mailto:fructifyme@gmail.com">fructifyme@gmail.com</a></p>
+    </div>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <a href="#top" class="wordmark">REPRO<span class="dot" style="color:var(--color-red-primary)">.</span></a>
+      <span>525 Lowell St &middot; Peabody, MA &middot; <a href="tel:+16178208681">(617) 820-8681</a></span>
+    </div>
+  </footer>
+
+</body>
+</html>

@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" role="img" aria-label="Portrait placeholder">
+  <rect width="400" height="400" fill="#161719"/>
+  <circle cx="200" cy="200" r="170" fill="#1f2024" stroke="#C8102E" stroke-width="3"/>
+  <text x="200" y="232" text-anchor="middle" font-family="Inter, system-ui, sans-serif" font-weight="600" font-size="140" fill="#F5F5F4" letter-spacing="-4">MG</text>
+</svg>
