@@ -73,13 +73,17 @@
       justify-content: space-between;
     }
     .wordmark {
-      font-weight: 800;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-size: 22px;
-      letter-spacing: -0.02em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--color-black);
       text-decoration: none;
+      display: inline-block;
     }
-    .wordmark .dot { color: var(--color-red-primary); }
+    .wordmark .dot {
+      color: var(--color-red-primary);
+    }
     .header-meta {
       font-size: 12px;
       font-weight: 500;
@@ -446,7 +450,7 @@
 
   <footer class="site-footer">
     <div class="footer-inner">
-      <a href="#top" class="wordmark">REPRO<span class="dot" style="color:var(--color-red-primary)">.</span></a>
+      <a href="#top" class="wordmark">REPRO<span class="dot">.</span></a>
       <span>525 Lowell St &middot; Peabody, MA &middot; <a href="tel:+16178208681">(617) 820-8681</a></span>
     </div>
   </footer>

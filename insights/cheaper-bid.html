@@ -390,23 +390,16 @@
       height: 72px;
     }
     .wordmark {
-      font-family: var(--font-sans);
-      font-weight: 800;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-size: 22px;
-      letter-spacing: 0.02em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--color-black);
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .wordmark::after {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--color-red-primary);
+      text-decoration: none;
       display: inline-block;
-      margin-top: 12px;
+    }
+    .wordmark .dot {
+      color: var(--color-red-primary);
     }
     .nav-links {
       display: flex;
@@ -925,7 +918,6 @@
       margin-bottom: var(--space-12);
     }
     .footer-brand .wordmark { color: var(--color-white); font-size: 28px; }
-    .footer-brand .wordmark::after { background: var(--color-red-primary); }
     .footer-tagline {
       font-size: var(--type-body-size);
       color: #A6A6A6;
@@ -998,7 +990,7 @@
   <header class="site-header" id="top">
     <div class="container">
       <nav class="nav" aria-label="Primary">
-        <a href="../index.html#top" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+        <a href="../index.html#top" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
 
         <ul class="nav-links">
           <li><a href="../index.html#work">Work</a></li>
@@ -1102,6 +1094,10 @@
             <p>The math gets sharper at the top of the market. A Chipotle averages roughly $3.2 million in AUV across the system &mdash; about $8,800 a day. A two-week overrun on a Chipotle build costs the operator more than $120,000 in lost revenue alone, before rent and payroll. If you&rsquo;re a multi-unit operator running five or ten stores, a single schedule miss can fund the entire next franchise fee. This is why brand development directors at the bigger systems are picky about which GCs land on their approved lists: schedule risk on construction is brand risk on launch.</p>
 
             <!-- 3. Brand spec -->
+            <figure style="margin: var(--space-10) 0; position: relative;">
+              <img src="../assets/images/cand-jobsite-interior.jpg" alt="QSR jobsite mid-build with interior finishes going in." loading="lazy" style="width:100%;height:auto;display:block;" />
+              <figcaption style="margin-top: var(--space-3); font-size: var(--type-caption-size); color: var(--color-gray-700); line-height: 1.5;">QSR jobsite mid-build &mdash; the moment when brand-spec literacy decides whether the audit clears on first walk.</figcaption>
+            </figure>
             <h2 id="brand-spec">
               <span class="h2-num">03 &middot; The audit you fail</span>
               The brand-spec compliance problem.
@@ -1279,7 +1275,7 @@
 
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="../index.html#top" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+          <a href="../index.html#top" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
           <p class="footer-tagline">QSR &amp; restaurant builders. Owner-side accountability. New England, 30 years.</p>
         </div>
 

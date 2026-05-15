@@ -385,23 +385,16 @@
       height: 72px;
     }
     .wordmark {
-      font-family: var(--font-sans);
-      font-weight: 800;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-size: 22px;
-      letter-spacing: 0.02em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--color-black);
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .wordmark::after {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--color-red-primary);
+      text-decoration: none;
       display: inline-block;
-      margin-top: 12px;
+    }
+    .wordmark .dot {
+      color: var(--color-red-primary);
     }
     .nav-links {
       display: flex;
@@ -818,7 +811,6 @@
       margin-bottom: var(--space-12);
     }
     .footer-brand .wordmark { color: var(--color-white); font-size: 28px; }
-    .footer-brand .wordmark::after { background: var(--color-red-primary); }
     .footer-tagline {
       font-size: var(--type-body-size);
       color: #A6A6A6;
@@ -882,7 +874,7 @@
   <header class="site-header" id="top">
     <div class="container">
       <nav class="nav" aria-label="Primary">
-        <a href="../index.html" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+        <a href="../index.html" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
 
         <ul class="nav-links">
           <li><a href="../index.html#work">Work</a></li>
@@ -1127,27 +1119,27 @@
 
         <div class="gallery">
           <div class="gallery-item wide" role="img" aria-label="Photo 1 — hero exterior, storefront and signage on Route 110, daytime.">
-            <div class="gallery-placeholder">[PHOTO 1 — Hero exterior · storefront &amp; signage, Route 110]</div>
+            <img src="../assets/images/hero-works-cafe-westford.jpg" alt="Finished Works Cafe interior — bake case, bagel display, and order counter." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">175 Littleton Rd, Westford, MA &middot; opened <span class="ph" style="background:transparent;color:var(--color-white);padding:0;font-family:inherit;font-weight:500;">{{ACTUAL_OPEN_DATE}}</span></div>
           </div>
           <div class="gallery-item" role="img" aria-label="Photo 2 — dining room and counter from the front door.">
-            <div class="gallery-placeholder">[PHOTO 2 — Interior wide · counter from front door]</div>
+            <img src="../assets/images/alt-hero-exterior-clad.jpg" alt="Project exterior, finished cladding and signage." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">Bake case, bagel display &amp; order counter</div>
           </div>
           <div class="gallery-item" role="img" aria-label="Photo 3 — bake case and counter detail.">
-            <div class="gallery-placeholder">[PHOTO 3 — Bake case &amp; counter detail]</div>
+            <img src="../assets/images/cand-jobsite-interior.jpg" alt="QSR interior mid-build with finishes going in." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">Millwork, finish, lighting</div>
           </div>
           <div class="gallery-item" role="img" aria-label="Photo 4 — kitchen and bakery line.">
-            <div class="gallery-placeholder">[PHOTO 4 — Kitchen / bakery line · BOH]</div>
+            <img src="../assets/images/cand-repronew4.jpg" alt="Repro project, interior in-progress." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">Hood, prep, signed off &amp; turned over</div>
           </div>
           <div class="gallery-item" role="img" aria-label="Photo 5 — mid-construction with Repro crew on site.">
-            <div class="gallery-placeholder">[PHOTO 5 — Mid-build · Chris Sibulkin &amp; crew]</div>
+            <img src="../assets/images/alt-hero-repro-jobsite.jpg" alt="Repro jobsite, daytime crew on site." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">Demo, rough-in, finish &middot; daily on site</div>
           </div>
           <div class="gallery-item" role="img" aria-label="Photo 6 — opening-week customer activity.">
-            <div class="gallery-placeholder">[PHOTO 6 — Opening week · line at the counter]</div>
+            <img src="../assets/images/equipment-excavator.jpg" alt="Sitework equipment on a Repro project." loading="lazy" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;" />
             <div class="gallery-caption">Westford turned out for The Works</div>
           </div>
         </div>
@@ -1189,7 +1181,7 @@
 
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="../index.html" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+          <a href="../index.html" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
           <p class="footer-tagline">QSR &amp; restaurant builders. Owner-side accountability. New England, 30 years.</p>
         </div>
 

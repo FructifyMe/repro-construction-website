@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 60" role="img" aria-label="Repro Construction">
+  <title>Repro Construction</title>
+  <text x="0" y="46"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif"
+        font-weight="800"
+        font-size="48"
+        letter-spacing="-1.92"
+        fill="#0C0A09">REPRO</text>
+  <text x="158" y="46"
+        font-family="Inter, -apple-system, BlinkMacSystemFont, system-ui, 'Segoe UI', Roboto, sans-serif"
+        font-weight="800"
+        font-size="58"
+        fill="#C8102E">.</text>
+</svg>

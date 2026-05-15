@@ -450,23 +450,16 @@
       height: 72px;
     }
     .wordmark {
-      font-family: var(--font-sans);
-      font-weight: 800;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, system-ui, sans-serif;
       font-size: 22px;
-      letter-spacing: 0.02em;
+      font-weight: 800;
+      letter-spacing: -0.04em;
       color: var(--color-black);
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-    .wordmark::after {
-      content: "";
-      width: 6px;
-      height: 6px;
-      background: var(--color-red-primary);
+      text-decoration: none;
       display: inline-block;
-      margin-top: 12px;
+    }
+    .wordmark .dot {
+      color: var(--color-red-primary);
     }
     .nav-links {
       display: flex;
@@ -530,7 +523,7 @@
       background-color: var(--color-gray-900);
       background-image:
         linear-gradient(135deg, rgba(10,10,10,0.55), rgba(10,10,10,0.25)),
-        url('assets/images/hero-works-cafe-westford.jpg');
+        url('assets/images/alt-hero-repro-jobsite.jpg');
       background-size: cover;
       background-position: center 40%;
     }
@@ -715,12 +708,12 @@
     .work-tile.dunkin .work-tile-img {
       background-image:
         linear-gradient(135deg, rgba(10,10,10,0.25), rgba(10,10,10,0.05)),
-        url('assets/images/work-dunkin-somerville.jpg');
+        url('assets/images/project-dunkin-recent.jpg');
     }
     .work-tile.canal .work-tile-img {
       background-image:
         linear-gradient(135deg, rgba(10,10,10,0.25), rgba(10,10,10,0.05)),
-        url('assets/images/work-canal-st-salem.jpg');
+        url('assets/images/hero-mid-renovation.jpg');
     }
 
     @media (max-width: 1023px) {
@@ -854,7 +847,6 @@
       margin-bottom: var(--space-12);
     }
     .footer-brand .wordmark { color: var(--color-white); font-size: 28px; }
-    .footer-brand .wordmark::after { background: var(--color-red-primary); }
     .footer-tagline {
       font-size: var(--type-body-size);
       color: #A6A6A6;
@@ -920,7 +912,7 @@
     <div class="container">
       <nav class="nav" aria-label="Primary">
         <!-- TODO: replace with actual wordmark SVG once Mark sends the logo file -->
-        <a href="#top" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+        <a href="#top" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
 
         <ul class="nav-links">
           <li><a href="#work">Work</a></li>
@@ -992,6 +984,19 @@
             <h3 class="pillar-title">Named operators on record</h3>
             <p class="pillar-body">Call Richard, Jason, or Philip. The brand founder of The Works Cafe and two QSR franchisee owners are on record. The names are real and the numbers connect.</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ BRAND PORTFOLIO LOGOS ============ -->
+    <section class="section" aria-label="Brand portfolio" style="padding-top: var(--space-10); padding-bottom: var(--space-10);">
+      <div class="container">
+        <div style="display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:var(--space-10);opacity:0.85;">
+          <img src="assets/images/logo-dunkin.png" alt="Dunkin' logo" loading="lazy" style="height:42px;width:auto;filter:grayscale(100%);opacity:0.7;" />
+          <img src="assets/images/logo-jerseymikes.png" alt="Jersey Mike's logo" loading="lazy" style="height:42px;width:auto;filter:grayscale(100%);opacity:0.7;" />
+          <img src="assets/images/logo-wayback.png" alt="Wayback Burger logo" loading="lazy" style="height:42px;width:auto;filter:grayscale(100%);opacity:0.7;" />
+          <img src="assets/images/logo-daves.png" alt="Dave's Hot Chicken logo" loading="lazy" style="height:42px;width:auto;filter:grayscale(100%);opacity:0.7;" />
+          <img src="assets/images/logo-smithwollensky.png" alt="Smith &amp; Wollensky logo" loading="lazy" style="height:42px;width:auto;filter:grayscale(100%);opacity:0.7;" />
         </div>
       </div>
     </section>
@@ -1138,7 +1143,7 @@
 
       <div class="footer-grid">
         <div class="footer-brand">
-          <a href="#top" class="wordmark" aria-label="Repro Construction — Home">REPRO</a>
+          <a href="#top" class="wordmark" aria-label="Repro Construction — Home">REPRO<span class="dot">.</span></a>
           <p class="footer-tagline">QSR &amp; restaurant builders. Owner-side accountability. New England, 30 years.</p>
         </div>
 
