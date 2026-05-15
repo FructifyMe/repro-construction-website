@@ -150,4 +150,41 @@ Completed submissions route to Mark's email and a Smartsheet pipeline (consisten
 | Per-brand landing pages | None | One per major QSR client |
 | Per-city landing pages | None | Six |
 | Trust signals visible without scrolling | Some logos | Logos + tenure + testimonial + phone |
-| Time-to-quote for visitor | Open contact form, type, submi
+| Time-to-quote for visitor | Open contact form, type, submit, wait | 90-second wizard or one tap to phone |
+
+---
+
+## What this means for sequencing
+
+1. **Lock the visual direction** — color, type, hero treatment. Two-day exercise. Builds on the brand discovery + positioning brief.
+2. **Build the homepage prototype** — single page in HTML, no backend. Mike can show Mark in 24 hours.
+3. **Confirm with Mark** — does he buy the concierge approach? If yes, scale up to the full architecture.
+4. **Build sector + city + project pages** — these are the SEO investment. Bulk content can be templated.
+5. **Wire the wizard + backend** — Formspree or similar, plus Smartsheet pipeline integration.
+6. **Migrate from reproconstruction.com** — 301 redirect map for every `?page_id=` URL.
+7. **Submit to Search Console + GBP** — measure from day one.
+
+---
+
+## Open questions for Mark
+
+- Color: does Mark have a strong preference, or are we free? Suggestion: lean into deep red (matching subtle Repro brand cues) or a strong safety-yellow accent.
+- Tagline: keep "Transforming a client's vision into reality" as a secondary line, or retire?
+- Existing wordmark: sacred, or open to a refresh?
+- Phone routing: should the wizard's fast-track-tagged inquiries route to Mark's mobile directly, or to a shared inbox?
+- Smartsheet integration: which workspace owns the new project pipeline? (Mike likely already has this set up under another engagement.)
+
+---
+
+## Sources
+
+- [Greiner Construction — sector-routed homepage example](https://www.greinerconstruction.com/)
+- [Tuckman-Barbee — proof-first GC homepage](https://www.tuckman-barbee.com/)
+- [Maman Corp — interactive scroll-light GC](https://www.mamancorp.com/)
+- [v0.app — single-input command-bar paradigm](https://v0.app/)
+- [Vercel — terminal hero, performance-as-visual](https://vercel.com/)
+- [Heyflow — interactive wizard / landing page guide](https://heyflow.com/blog/interactive-landing-pages/)
+- [Adobe Marketo Engage — conversational landing pages](https://experienceleague.adobe.com/en/docs/marketo-learn/tutorials/dynamic-chat/conversational-landing-pages)
+- [21 Web Design Trends 2026 — AI-first web](https://uiuxshowcase.com/blog/21-web-design-trends-2026-design-for-humans-ai-first-web/)
+- [Stackmatix — Google AI Overviews CTR impact](https://www.stackmatix.com/blog/google-ai-overview-seo-impact)
+- [ALM Corp — AEO vs SEO 2026](https://almcorp.com/blog/aeo-vs-seo-2026-complete-strategy-guide/)
